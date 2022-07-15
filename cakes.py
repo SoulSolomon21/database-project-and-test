@@ -59,8 +59,8 @@ with open("cake survey.csv", "r")as file:
         db.execute("""INSERT INTO payments(payment_type) VALUES(?);""",payment)
         db.execute("""INSERT INTO functions(function_type) VALUES(?);""",functions)
  
-        db.execute("""INSERT INTO receipts(c_id) VALUES((SELECT id FROM customers WHERE  email = ?));""", emails)
-        db.execute("""INSERT INTO receipts(f_id) VALUES((SELECT function_id FROM functions WHERE function_type= DISTINCT(?)));""", functions)
-        db.execute("""INSERT INTO receipts(t_id) VALUES((SELECT id FROM cakes WHERE  type = ?));""", types )
-        db.execute("""INSERT INTO receipts(p_id) VALUES((SELECT payment_id FROM payments WHERE  payment_type = DISTINCT(?)));""", payment)
+        db.execute("""INSERT INTO receipts(c_id,f_id,t_id,p_id) VALUES((SELECT id FROM customers WHERE  email = ?),(SELECT DISTINCT(function_id) FROM functions WHERE function_type= ?),(SELECT id FROM cakes WHERE  type = ?),(SELECT DISTINCT(payment_id) FROM payments WHERE  payment_type = ?));""", emails,functions,types,payment)
+        # db.execute("""INSERT INTO receipts(f_id) VALUES((SELECT DISTINCT(function_id) FROM functions WHERE function_type= ?));""", functions)
+        # db.execute("""INSERT INTO receipts(t_id) VALUES((SELECT id FROM cakes WHERE  type = ?));""", types )
+        # db.execute("""INSERT INTO receipts(p_id) VALUES((SELECT DISTINCT(payment_id) FROM payments WHERE  payment_type = ?));""", payment)
        
