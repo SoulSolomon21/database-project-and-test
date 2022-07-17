@@ -1,0 +1,12 @@
+MY DATABASE PROJECT
+
+The database project  is a database that stores information abot a cake business. the database is originally a flatfile that hass all the information collected about the cake orders that the company has received in a given time period
+The flatfile contains information like the email of the customer, the function that the cake was for, the size of the cake, the flavour of the cake, the type of the cake and the rating given to the cake by the customer.
+In our relational database, the information is broken down into different tables in order to reduce data redundancy.
+The tables in the relational database include:
+A customers table that has the customer's email, the amount that they paid for the particular cake that they ordered and the rating that they gave the cake
+A cakes table that has the flavour, size and type of the cake ordered by the customer.
+A payments tabel that shows the type of paymenet used by the customer and the id given to that specific payment type.
+A functions table that shows the different functions that cakes are ordered for and an id for a particular function.
+A receipts table that holds the ids of th customer, the function that the cake was for, the type of the cake that was ordered for and the payment type that was used.
+The receipts table acts as the join table in this relational database.

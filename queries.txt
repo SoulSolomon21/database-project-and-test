@@ -1,0 +1,14 @@
+1. The following is a query to list the emails of the customers who ordered for cakes for birthdays
+SELECT email FROM customers WHERE id IN (SELECT c_id FROM receipts WHERE f_id IN (SELECT function_id FROM functions WHERE function_type LIKE "%birthday%"))
+
+2. A querry that returns the email,flavour and size of the cake ordered by a customer by joining the cakes table to the customers table:
+SELECT email,flavour,size FROM cakes JOIN customers WHERE customers.id = cakes.id;
+
+3. A query that counts the number of customers who orderd for Chocolate cakes:
+SELECT COUNT(email) FROM cakes JOIN customers WHERE customers.id = cakes.id AND cakes.flavour LIKE "%chocolate%"
+
+4.A querry that counts the number of customers who paid for the cakes using cash:
+SELECT COUNT(c_id) FROM receipts JOIN payments WHERE p_id = payments.payment_id AND payment_type LIKE "%cash%";
+
+5. A querry that counts the number of customers who gave the cakes a five star rating:
+SELECT COUNT(email) FROM customers WHERE rating = "5";
